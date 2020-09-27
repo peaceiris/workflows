@@ -1,0 +1,19 @@
+name: 'Install and Run licensed'
+description: 'Install and run github/licensed'
+inputs:
+  placeholder:
+    description: 'placeholder'
+    required: false
+runs:
+  using: "composite"
+  steps: 
+    - name: Install licensed
+      run: |
+        cd "${RUNNER_TEMP}"
+        export LICENSED_VERSION="2.13.0"
+        curl -Lfs -o licensed.tar.gz "https://github.com/github/licensed/releases/download/${LICENSED_VERSION}/licensed-${LICENSED_VERSION}-linux-x64.tar.gz"
+        sudo tar -xzf licensed.tar.gz
+        sudo mv licensed /usr/local/bin/licensed
+      shell: bash
+    - run: licensed status
+      shell: bash
