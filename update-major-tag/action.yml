@@ -1,0 +1,20 @@
+name: 'Update major tag'
+description: 'Update major tag like v1'
+inputs:
+  placeholder:
+    description: 'placeholder'
+    default: ''
+    required: false
+runs:
+  using: "composite"
+  steps: 
+    - name: Update major tag
+      run: |
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+        export TAG_NAME="${GITHUB_REF##refs/tags/}"
+        export TAG_MAJOR="${TAG_NAME%%.*}"
+        git tag --force -a "${TAG_MAJOR}" -m "Release ${TAG_NAME}"
+        git push --force origin "${TAG_MAJOR}"
+      shell: bash
