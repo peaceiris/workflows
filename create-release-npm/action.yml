@@ -1,13 +1,9 @@
 name: 'Create release for npm'
 description: 'Create release for npm'
 inputs:
-  draft:
-    description: 'Enable --draft flag'
-    default: 'true'
-    required: false
-  prerelease:
-    description: 'Enable --prerelease flag'
-    default: 'true'
+  placeholder:
+    description: 'placeholder'
+    default: ''
     required: false
 runs:
   using: "composite"
@@ -17,11 +13,9 @@ runs:
         TAG_NAME="${GITHUB_REF##refs/tags/}"
         echo "See [CHANGELOG.md](https://github.com/${GITHUB_REPOSITORY}/blob/${TAG_NAME}/CHANGELOG.md) for more details." > ./release_notes.md
         RELEASE_TITLE="$(jq -r '.name' ./package.json) ${TAG_NAME}"
-        DRAFT="$(if [ "${{ inputs.draft }}" = "true" ]; then; echo "--draft"; fi)"
-        PRERELEASE="$(if [ "${{ inputs.prerelease }}" = "true" ]; then; echo "--prerelease"; fi)"
         gh release create "${TAG_NAME}" \
-          "${DRAFT}" \
-          "${PRERELEASE}" \
+          --draft \
+          --prerelease \
           --title "${RELEASE_TITLE}" \
           --notes-file ./release_notes.md
       shell: bash
