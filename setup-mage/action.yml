@@ -1,0 +1,22 @@
+name: 'Install magefile/mage'
+description: 'A composite GitHub Actions workflow to install magefile/mage'
+inputs:
+  placeholder:
+    description: 'placeholder'
+    default: ''
+    required: false
+runs:
+  using: "composite"
+  steps: 
+    - name: Install magefile/mage
+      run: |
+        TEMP_DIR=$(mktemp --directory)
+        cd ${TEMP_DIR}
+        export MAGE_VERSION="1.10.0"
+        wget --quiet https://github.com/magefile/mage/releases/download/v${MAGE_VERSION}/mage_${MAGE_VERSION}_Linux-64bit.tar.gz
+        tar xvf mage_1.10.0_Linux-64bit.tar.gz
+        sudo cp ./mage /usr/local/bin/mage
+      shell: bash
+    - run: mage --version
+      shell: bash
+ 
