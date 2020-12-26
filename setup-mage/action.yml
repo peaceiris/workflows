@@ -23,4 +23,3 @@ runs:
       shell: bash
     - run: mage --version
       shell: bash
- 
