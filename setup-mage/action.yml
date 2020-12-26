@@ -10,12 +10,15 @@ runs:
   steps: 
     - name: Install magefile/mage
       run: |
+        echo "[INFO] inputs.mage-version: ${{ inputs.mage-version }}"
         if [ -z '${{ inputs.mage-version }}' ]; then
+          echo "[INFO] fetching the latest mage version"
           export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')"
         else
           export MAGE_VERSION="${{ inputs.mage-version }}"
         fi
         export MAGE_VERSION="${MAGE_VERSION#v}"
+        echo "[INFO] mage version: ${MAGE_VERSION}"
         cd $(mktemp --directory)
         wget --quiet https://github.com/magefile/mage/releases/download/v${MAGE_VERSION}/mage_${MAGE_VERSION}_Linux-64bit.tar.gz
         tar xvf "mage_${MAGE_VERSION}_Linux-64bit.tar.gz"
