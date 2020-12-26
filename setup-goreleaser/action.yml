@@ -1,8 +1,8 @@
 name: 'Install goreleaser'
 description: 'A composite GitHub Actions workflow to install goreleaser'
 inputs:
-  placeholder:
-    description: 'placeholder'
+  goreleaser-version:
+    description: 'Set a goreleaser version, e.g. 0.149.0'
     default: ''
     required: false
 runs:
@@ -10,12 +10,16 @@ runs:
   steps: 
     - name: Install goreleaser
       run: |
+        if [ -z '${{ inputs.goreleaser-version }}' ]; then
+          export GORELEASER_VERSION=$(curl -fsi "https://github.com/goreleaser/goreleaser/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')
+        else
+          export GORELEASER_VERSION="${{ inputs.goreleaser-version }}"
+        fi
+        export GORELEASER_VERSION="${GORELEASER_VERSION#v}"
         cd $(mktemp --directory)
-        export GORELEASER_VERSION="0.149.0"
         wget --quiet https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz
         tar xvf goreleaser_Linux_x86_64.tar.gz
         sudo cp ./goreleaser /usr/local/bin/goreleaser
       shell: bash
     - run: goreleaser --version
       shell: bash
- 
