@@ -10,6 +10,7 @@ runs:
   steps: 
     - name: Install magefile/mage
       run: |
+        set -eux
         echo "[INFO] inputs.mage-version: ${{ inputs.mage-version }}"
         if [ -z '${{ inputs.mage-version }}' ]; then
           echo "[INFO] fetching the latest mage version"
