@@ -10,7 +10,7 @@ runs:
   steps: 
     - name: Install magefile/mage
       run: |
-        set -eux
+        # set -eux
         if [ -z '${{ inputs.mage-version }}' ]; then
           export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr '\r' '\n')"
         else
