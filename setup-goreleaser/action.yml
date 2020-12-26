@@ -1,5 +1,5 @@
 name: 'Install goreleaser'
-description: 'A composite GitHub Actions workflow to install goreleaser'
+description: 'A composite run steps action to install goreleaser'
 inputs:
   goreleaser-version:
     description: 'Set a goreleaser version, e.g. 0.149.0'
