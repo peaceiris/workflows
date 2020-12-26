@@ -1,5 +1,5 @@
 name: 'Install magefile/mage'
-description: 'A composite GitHub Actions workflow to install magefile/mage'
+description: 'A composite run steps action to install magefile/mage'
 inputs:
   mage-version:
     description: 'Set a mage version, e.g. 1.10.0'
