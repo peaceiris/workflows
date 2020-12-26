@@ -11,7 +11,7 @@ runs:
     - name: Install magefile/mage
       run: |
         if [ -z '${{ inputs.mage-version }}' ]; then
-          export MAGE_VERSION=$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')
+          export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')"
         else
           export MAGE_VERSION="${{ inputs.mage-version }}"
         fi
