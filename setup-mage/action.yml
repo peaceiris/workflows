@@ -1,8 +1,8 @@
 name: 'Install magefile/mage'
 description: 'A composite GitHub Actions workflow to install magefile/mage'
 inputs:
-  placeholder:
-    description: 'placeholder'
+  mage-version:
+    description: 'Set mage version, e.g. 1.10.0'
     default: ''
     required: false
 runs:
@@ -10,10 +10,15 @@ runs:
   steps: 
     - name: Install magefile/mage
       run: |
+        if [ -z '${{ inputs.mage-version }}' ]; then
+          export MAGE_VERSION=$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')
+        else
+          export MAGE_VERSION="${{ inputs.mage-version }}"
+        fi
+        export MAGE_VERSION="${MAGE_VERSION#v}"
         cd $(mktemp --directory)
-        export MAGE_VERSION="1.10.0"
         wget --quiet https://github.com/magefile/mage/releases/download/v${MAGE_VERSION}/mage_${MAGE_VERSION}_Linux-64bit.tar.gz
-        tar xvf mage_1.10.0_Linux-64bit.tar.gz
+        tar xvf "mage_${MAGE_VERSION}_Linux-64bit.tar.gz"
         sudo cp ./mage /usr/local/bin/mage
       shell: bash
     - run: mage --version
