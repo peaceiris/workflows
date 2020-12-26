@@ -14,7 +14,9 @@ Definition: [setup-goreleaser/action.yml](https://github.com/peaceiris/workflows
 
 [goreleaser/goreleaser]: https://github.com/goreleaser/goreleaser/
 
-Usage:
+### Install the Latest Version
+
+Here is an example GitHub Actions workflow to install the latest `goreleaser` and run it.
 
 ```yaml
 name: CI
@@ -35,6 +37,16 @@ jobs:
       - run: goreleaser check
 ```
 
+### Install a Specific Version
+
+```yaml
+- uses: peaceiris/workflows/setup-goreleaser@v0.8.1
+  with:
+    goreleaser-version: '0.149.0'
+```
+
+
+
 ## Setup [magefile/mage]
 
 Install `mage` to a GitHub Actions virtual environment.
@@ -43,7 +55,9 @@ Definition: [setup-mage/action.yml](https://github.com/peaceiris/workflows/blob/
 
 [magefile/mage]: https://github.com/magefile/mage
 
-Usage:
+### Install the Latest Version
+
+Here is an example GitHub Actions workflow to install the latest `mage` and run it.
 
 ```yaml
 name: CI
@@ -62,4 +76,12 @@ jobs:
 
       - run: mage -h
       - run: mage fmt
+```
+
+### Install a Specific Version
+
+```yaml
+- uses: peaceiris/workflows/setup-mage@v0.8.1
+  with:
+    mage-version: '1.10.0'
 ```
