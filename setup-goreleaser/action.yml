@@ -1,0 +1,21 @@
+name: 'Install goreleaser'
+description: 'A composite GitHub Actions workflow to install goreleaser'
+inputs:
+  placeholder:
+    description: 'placeholder'
+    default: ''
+    required: false
+runs:
+  using: "composite"
+  steps: 
+    - name: Install goreleaser
+      run: |
+        cd $(mktemp --directory)
+        export GORELEASER_VERSION="0.149.0"
+        wget --quiet https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz
+        tar xvf goreleaser_Linux_x86_64.tar.gz
+        sudo cp ./goreleaser /usr/local/bin/goreleaser
+      shell: bash
+    - run: goreleaser --version
+      shell: bash
+ 
