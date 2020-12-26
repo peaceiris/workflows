@@ -10,8 +10,9 @@ runs:
   steps: 
     - name: Install goreleaser
       run: |
+        set -eux
         if [ -z '${{ inputs.goreleaser-version }}' ]; then
-          export GORELEASER_VERSION=$(curl -fsi "https://github.com/goreleaser/goreleaser/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}')
+          export GORELEASER_VERSION="$(curl -fsi "https://github.com/goreleaser/goreleaser/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr '\r' '\n')"
         else
           export GORELEASER_VERSION="${{ inputs.goreleaser-version }}"
         fi
