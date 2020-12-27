@@ -8,7 +8,7 @@ A collection of composite run steps GitHub Actions.
 
 ## Setup [goreleaser/goreleaser]
 
-Install `goreleaser` to a GitHub Actions virtual environment.
+Install `goreleaser` to a GitHub Actions Ubuntu virtual environment.
 
 Definition: [setup-goreleaser/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-goreleaser/action.yml)
 
@@ -49,7 +49,7 @@ jobs:
 
 ## Setup [magefile/mage]
 
-Install `mage` to a GitHub Actions virtual environment.
+Install `mage` to a GitHub Actions Ubuntu virtual environment.
 
 Definition: [setup-mage/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-mage/action.yml)
 
