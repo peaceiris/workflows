@@ -11,6 +11,7 @@ runs:
     - name: Install magefile/mage
       run: |
         # set -eux
+        echo "https://github.com/peaceiris/workflows/blob/main/setup-mage/action.yml"
         if [ -z '${{ inputs.mage-version }}' ]; then
           export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr '\r' '\n')"
         else
