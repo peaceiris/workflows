@@ -11,6 +11,7 @@ runs:
     - name: Install goreleaser
       run: |
         # set -eux
+        echo "https://github.com/peaceiris/workflows/blob/main/setup-goreleaser/action.yml"
         if [ -z '${{ inputs.goreleaser-version }}' ]; then
           export GORELEASER_VERSION="$(curl -fsi "https://github.com/goreleaser/goreleaser/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr '\r' '\n')"
         else
