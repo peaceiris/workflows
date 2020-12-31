@@ -13,7 +13,7 @@ runs:
         # set -eux
         echo "https://github.com/peaceiris/workflows/blob/main/setup-mage/action.yml"
         if [ -z '${{ inputs.mage-version }}' ]; then
-          export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr '\r' '\n')"
+          export MAGE_VERSION="$(curl -fsi "https://github.com/magefile/mage/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr -d '\r')"
         else
           export MAGE_VERSION="${{ inputs.mage-version }}"
         fi
