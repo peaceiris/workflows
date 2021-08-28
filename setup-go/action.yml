@@ -1,0 +1,23 @@
+name: 'Setup Go'
+description: 'A composite action to setup Go project.'
+inputs:
+  go-version:
+    description: 'Set a Go version, e.g. 1.17'
+    default: '1.17'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '${{ inputs.go-version }}'
+
+    - uses: peaceiris/workflows/setup-mage@v0.8.1
+    - uses: peaceiris/workflows/setup-goreleaser@v0.8.1
+
+    - uses: actions/cache@v2
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
