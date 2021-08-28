@@ -31,6 +31,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: peaceiris/workflows/setup-go@v0.9.0
+        with:
+          go-version: '1.17'
 
       - run: go version
       - run: mage -h
