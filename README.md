@@ -2,7 +2,7 @@
 
 A collection of composite run steps GitHub Actions.
 
-> [Creating a composite run steps action - GitHub Docs](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/creating-a-composite-run-steps-action)
+> [Creating a composite action - GitHub Docs](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action)
 
 
 
