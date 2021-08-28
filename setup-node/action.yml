@@ -20,3 +20,4 @@ runs:
           ${{ runner.os }}-node-
 
     - run: npm i -g npm
+      shell: bash

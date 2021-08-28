@@ -18,3 +18,4 @@ runs:
         key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
 
     - run: python3 -m pip install --upgrade pip pipenv
+      shell: bash
