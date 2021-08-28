@@ -1,0 +1,22 @@
+name: 'Setup Node.js'
+description: 'A composite action to setup Node.js project.'
+inputs:
+  node-version:
+    description: 'Set a Node.js version, e.g. 14.17.5'
+    default: '14'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '${{ inputs.node-version }}'
+
+    - uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - run: npm i -g npm

@@ -1,0 +1,26 @@
+name: 'Setup Rust'
+description: 'A composite action to setup Rust project.'
+runs:
+  using: "composite"
+  steps:
+    - name: Install Rust toolchain
+      run: |
+        rustup set profile minimal
+        rustup toolchain update stable --no-self-update
+        rustup default stable
+        rustup component add rustfmt clippy
+        rustup show
+        rustc --version --verbose
+        cargo --version --verbose
+        cargo fmt --version
+        cargo clippy --version
+
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          target/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
