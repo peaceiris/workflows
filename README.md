@@ -6,6 +6,39 @@ A collection of composite run steps GitHub Actions.
 
 
 
+## Setup Go Project
+
+This composite action includes the following actions:
+
+- `actions/setup-go`
+- `peaceiris/workflows/setup-mage`
+- `peaceiris/workflows/setup-goreleaser`
+- `actions/cache`
+
+Definition: [setup-go/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-go/action.yml)
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: peaceiris/workflows/setup-go@v0.9.0
+
+      - run: go version
+      - run: mage -h
+      - run: goreleaser -h
+```
+
+
+
 ## Setup [goreleaser/goreleaser]
 
 Install `goreleaser` to a GitHub Actions Ubuntu virtual environment.
