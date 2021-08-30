@@ -30,13 +30,104 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: peaceiris/workflows/setup-go@v0.9.0
+      - uses: peaceiris/workflows/setup-go@v0.10.0
         with:
           go-version: '1.17'
 
       - run: go version
       - run: mage -h
       - run: goreleaser -h
+```
+
+
+
+## Setup Node.js Project
+
+This composite action includes the following actions:
+
+- `actions/setup-node`
+- `actions/cache`
+
+Definition: [setup-node/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-node/action.yml)
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: peaceiris/workflows/setup-node@v0.10.0
+        with:
+          node-version: '14.17.5'
+
+      - run: node -v
+      - run: npm -v
+```
+
+
+
+## Setup Python Project
+
+This composite action includes the following actions:
+
+- `actions/setup-python`
+- `actions/cache`
+
+Definition: [setup-python/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-python/action.yml)
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: peaceiris/workflows/setup-python@v0.10.0
+        with:
+          python-version: '3.8'
+
+      - run: python3 -V
+      - run: python3 -m pip -V
+      - run: python3 -m pipenv --version
+```
+
+
+
+## Setup Rust Project
+
+This composite action includes the following actions:
+
+- `actions/cache`
+
+Definition: [setup-rust/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-rust/action.yml)
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: peaceiris/workflows/setup-rust@v0.10.0
 ```
 
 
