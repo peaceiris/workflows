@@ -1,0 +1,41 @@
+name: 'Setup Docker'
+description: 'A composite action to setup Docker project.'
+inputs:
+  compose-version:
+    description: 'Set a compose version (>= 2.0.0), e.g. 2.0.1'
+    default: 'latest'
+    required: false
+  buildx-version:
+    description: 'Set a buildx version, e.g. 0.6.3'
+    default: 'latest'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare .docker
+      run: |
+        mkdir -p "${HOME}/.docker/cli-plugins"
+
+    - name: Install docker compose
+      run: |
+        if [ "${{ inputs.compose-version }}" = "latest" ]; then
+          COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')
+        else
+          COMPOSE_VERSION="${{ inputs.compose-version }}"
+        fi
+        curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" \
+          -o "${HOME}/.docker/cli-plugins/docker-compose"
+        chmod a+x "${HOME}/.docker/cli-plugins/docker-compose"
+    - run: docker compose version
+
+    - name: Install docker buildx
+      run: |
+        if [ "${{ inputs.buildx-version }}" = "latest" ]; then
+          BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r '.tag_name')
+        else
+          BUILDX_VERSION="${{ inputs.buildx-version }}"
+        fi
+        curl -L https://github.com/docker/buildx/releases/download/v${BUILDX_VERSION}/buildx-v${BUILDX_VERSION}.linux-amd64 \
+          -o "${HOME}/.docker/cli-plugins/docker-buildx"
+        chmod a+x "${HOME}/.docker/cli-plugins/docker-buildx"
+    - run: docker buildx version
