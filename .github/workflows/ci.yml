@@ -19,5 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: peaceiris/workflows/setup-docker@main
+      - run: docker version
       - run: docker compose version
       - run: docker buildx version

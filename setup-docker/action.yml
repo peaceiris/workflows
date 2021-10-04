@@ -17,6 +17,9 @@ runs:
       run: |
         mkdir -p "${HOME}/.docker/cli-plugins"
 
+    - run: docker version
+      shell: bash
+
     - name: Install docker compose
       shell: bash
       run: |
