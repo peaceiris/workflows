@@ -6,9 +6,9 @@ on:
       - main
     paths-ignore:
       - "**.md"
-  pull_request:
-    paths-ignore:
-      - "**.md"
+  # pull_request:
+  #   paths-ignore:
+  #     - "**.md"
 
 permissions:
   contents: read
@@ -18,6 +18,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: peaceiris/workflows/setup-docker@setup-docker
+      - uses: peaceiris/workflows/setup-docker@main
       - run: docker compose version
       - run: docker buildx version
