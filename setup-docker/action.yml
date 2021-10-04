@@ -43,4 +43,7 @@ runs:
           -o "${HOME}/.docker/cli-plugins/docker-buildx"
         chmod a+x "${HOME}/.docker/cli-plugins/docker-buildx"
     - run: docker buildx version
+      env:
+        DOCKER_CLI_EXPERIMENTAL: "enabled"
+        DOCKER_BUILDKIT: "1"
       shell: bash
