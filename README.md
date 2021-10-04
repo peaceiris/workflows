@@ -6,6 +6,58 @@ A collection of composite run steps GitHub Actions.
 
 
 
+## Setup Docker Project
+
+This composite action includes the following actions:
+
+- Install docker compose v2
+- Install docker buildx
+
+Definition: [setup-docker/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-docker/action.yml)
+
+### Install the Latest Version
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: peaceiris/workflows/setup-docker@v0.11.0
+      - run: docker compose version
+      - run: docker buildx version
+```
+
+### Install a Specific Version
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: peaceiris/workflows/setup-docker@v0.11.0
+        with:
+          compose-version: '2.0.1'
+          buildx-version: '0.6.3'
+      - run: docker compose version
+      - run: docker buildx version
+```
+
+
+
 ## Setup Go Project
 
 This composite action includes the following actions:
