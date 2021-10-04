@@ -25,7 +25,7 @@ runs:
         else
           COMPOSE_VERSION="${{ inputs.compose-version }}"
         fi
-        curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" \
+        curl --silent -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" \
           -o "${HOME}/.docker/cli-plugins/docker-compose"
         chmod a+x "${HOME}/.docker/cli-plugins/docker-compose"
     - run: docker compose version
@@ -39,11 +39,8 @@ runs:
         else
           BUILDX_VERSION="${{ inputs.buildx-version }}"
         fi
-        curl -L https://github.com/docker/buildx/releases/download/v${BUILDX_VERSION}/buildx-v${BUILDX_VERSION}.linux-amd64 \
+        curl --silent -L https://github.com/docker/buildx/releases/download/v${BUILDX_VERSION}/buildx-v${BUILDX_VERSION}.linux-amd64 \
           -o "${HOME}/.docker/cli-plugins/docker-buildx"
         chmod a+x "${HOME}/.docker/cli-plugins/docker-buildx"
     - run: docker buildx version
-      env:
-        DOCKER_CLI_EXPERIMENTAL: "enabled"
-        DOCKER_BUILDKIT: "1"
       shell: bash
