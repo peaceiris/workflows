@@ -13,10 +13,12 @@ runs:
   using: "composite"
   steps:
     - name: Prepare .docker
+      shell: bash
       run: |
         mkdir -p "${HOME}/.docker/cli-plugins"
 
     - name: Install docker compose
+      shell: bash
       run: |
         if [ "${{ inputs.compose-version }}" = "latest" ]; then
           COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')
@@ -27,8 +29,10 @@ runs:
           -o "${HOME}/.docker/cli-plugins/docker-compose"
         chmod a+x "${HOME}/.docker/cli-plugins/docker-compose"
     - run: docker compose version
+      shell: bash
 
     - name: Install docker buildx
+      shell: bash
       run: |
         if [ "${{ inputs.buildx-version }}" = "latest" ]; then
           BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r '.tag_name')
@@ -39,3 +43,4 @@ runs:
           -o "${HOME}/.docker/cli-plugins/docker-buildx"
         chmod a+x "${HOME}/.docker/cli-plugins/docker-buildx"
     - run: docker buildx version
+      shell: bash
