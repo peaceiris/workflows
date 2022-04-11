@@ -1,0 +1,19 @@
+name: hadolint
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    container:
+      image: 'hadolint/hadolint:v2.10.0-alpine'
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint Dockerfile
+        run: |
+          for d in $(find . -type f -name "Dockerfile" -exec dirname {} \;); do
+            (cd ${d} && hadolint Dockerfile)
+          done
