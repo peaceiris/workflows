@@ -263,3 +263,13 @@ jobs:
   with:
     mage-version: '1.10.0'
 ```
+
+
+
+## Reusable hadolint workflow
+
+```yaml
+jobs:
+  hadolint:
+    uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.12.0
+```
