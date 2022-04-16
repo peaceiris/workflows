@@ -28,8 +28,8 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: peaceiris/workflows/setup-docker@v0.11.0
+      - uses: actions/checkout@v3
+      - uses: peaceiris/workflows/setup-docker@v0.12.0
       - run: docker compose version
       - run: docker buildx version
 ```
@@ -47,11 +47,11 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: peaceiris/workflows/setup-docker@v0.11.0
+      - uses: actions/checkout@v3
+      - uses: peaceiris/workflows/setup-docker@v0.12.0
         with:
-          compose-version: '2.0.1'
-          buildx-version: '0.6.3'
+          compose-version: '2.4.1'
+          buildx-version: '0.8.2'
       - run: docker compose version
       - run: docker buildx version
 ```
@@ -80,11 +80,11 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-go@v0.10.0
+      - uses: peaceiris/workflows/setup-go@v0.12.0
         with:
-          go-version: '1.17'
+          go-version: '1.18'
 
       - run: go version
       - run: mage -h
@@ -113,11 +113,11 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-node@v0.10.0
+      - uses: peaceiris/workflows/setup-node@v0.12.0
         with:
-          node-version: '14.17.5'
+          node-version: '16.14.2'
 
       - run: node -v
       - run: npm -v
@@ -145,11 +145,11 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-python@v0.10.0
+      - uses: peaceiris/workflows/setup-python@v0.12.0
         with:
-          python-version: '3.8'
+          python-version: '3.10'
 
       - run: python3 -V
       - run: python3 -m pip -V
@@ -177,9 +177,9 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-rust@v0.10.0
+      - uses: peaceiris/workflows/setup-rust@v0.12.0
 ```
 
 
@@ -207,9 +207,9 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-goreleaser@v0.8.1
+      - uses: peaceiris/workflows/setup-goreleaser@v0.12.0
 
       - run: goreleaser -h
       - run: goreleaser check
@@ -218,9 +218,9 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-goreleaser@v0.8.1
+- uses: peaceiris/workflows/setup-goreleaser@v0.12.0
   with:
-    goreleaser-version: '0.149.0'
+    goreleaser-version: '1.8.1'
 ```
 
 
@@ -248,9 +248,9 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-mage@v0.8.1
+      - uses: peaceiris/workflows/setup-mage@v0.12.0
 
       - run: mage -h
       - run: mage fmt
@@ -259,7 +259,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-mage@v0.8.1
+- uses: peaceiris/workflows/setup-mage@v0.12.0
   with:
     mage-version: '1.10.0'
 ```
