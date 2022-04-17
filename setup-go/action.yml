@@ -1,23 +1,35 @@
-name: 'Setup Go'
-description: 'A composite action to setup Go project.'
+name: "Setup Go"
+description: "A composite action to setup Go project."
 inputs:
   go-version:
-    description: 'Set a Go version, e.g. 1.17'
-    default: '1.17'
+    description: "Set a Go version, e.g. 1.18"
+    default: "1.18"
+    required: false
+  cache-path:
+    description: "The path input of actions/cache"
+    default: "~/go/pkg/mod"
+    required: false
+  cache-key:
+    description: "The key input of actions/cache"
+    default: "${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}"
+    required: false
+  cache-restore-keys:
+    description: "The restore-keys input of actions/cache"
+    default: |
+      ${{ runner.os }}-go-
     required: false
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-go@v2
+    - uses: actions/setup-go@v3
       with:
-        go-version: '${{ inputs.go-version }}'
+        go-version: "${{ inputs.go-version }}"
 
-    - uses: peaceiris/workflows/setup-mage@v0.8.1
-    - uses: peaceiris/workflows/setup-goreleaser@v0.8.1
+    - uses: peaceiris/workflows/setup-mage@v0.12.0
+    - uses: peaceiris/workflows/setup-goreleaser@v0.12.0
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
-        path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
+        path: "${{ inputs.cache-path }}"
+        key: "${{ inputs.cache-key }}"
+        restore-keys: "${{ inputs.cache-restore-keys }}"
