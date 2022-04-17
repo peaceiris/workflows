@@ -2,12 +2,12 @@ name: 'Install goreleaser'
 description: 'A composite run steps action to install goreleaser'
 inputs:
   goreleaser-version:
-    description: 'Set a goreleaser version, e.g. 0.149.0'
+    description: 'Set a goreleaser version, e.g. 1.8.1'
     default: ''
     required: false
 runs:
   using: "composite"
-  steps: 
+  steps:
     - name: Install goreleaser
       run: |
         # set -eux
