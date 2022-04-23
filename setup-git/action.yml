@@ -9,11 +9,16 @@ inputs:
     description: "Set a user email"
     default: "github-actions[bot]@users.noreply.github.com"
     required: false
+  working_directory:
+    description: "Set a working directory"
+    default: ""
+    required: false
 runs:
   using: "composite"
   steps:
     - name: "git config"
       shell: "bash"
+      working-directory: "${{ inputs.working_directory }}"
       run: |
         git config user.name "${{ inputs.user_name }}"
         git config user.email "${{ inputs.user_email }}"
