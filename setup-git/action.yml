@@ -1,0 +1,19 @@
+name: "Setup Git"
+description: "A composite action to setup Git config"
+inputs:
+  user_name:
+    description: "Set a user name"
+    default: "github-actions[bot]"
+    required: false
+  user_email:
+    description: "Set a user email"
+    default: "github-actions[bot]@users.noreply.github.com"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: "git config"
+      shell: "bash"
+      run: |
+        git config user.name "${{ inputs.user_name }}"
+        git config user.email "${{ inputs.user_email }}"
