@@ -1,8 +1,8 @@
 name: "Setup Git"
 description: "A composite action to setup Git config"
 inputs:
-  scope:
-    description: "Set a scope --global or --local"
+  flags:
+    description: "Set flags. e.g. --global, --local"
     default: "--local"
     required: false
   user_name:
@@ -24,5 +24,5 @@ runs:
       shell: "bash"
       working-directory: "${{ inputs.working_directory }}"
       run: |
-        git config "${{ inputs.scope }}" user.name "${{ inputs.user_name }}"
-        git config "${{ inputs.scope }}" user.email "${{ inputs.user_email }}"
+        git config "${{ inputs.flags }}" user.name "${{ inputs.user_name }}"
+        git config "${{ inputs.flags }}" user.email "${{ inputs.user_email }}"
