@@ -20,6 +20,7 @@ inputs:
   cache-path:
     description: "The path input of actions/cache"
     default: |
+      /tmp/hugo_cache
       ~/go/pkg/mod
       ~/.npm
     required: false
