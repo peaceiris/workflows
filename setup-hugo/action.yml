@@ -1,0 +1,57 @@
+name: "Setup Hugo"
+description: "A composite action to setup Hugo project."
+inputs:
+  node-version:
+    description: "Set a Node.js version, e.g. 16.14.2"
+    default: "16"
+    required: false
+  go-version:
+    description: "Set a Go version, e.g. 1.18"
+    default: "1.18"
+    required: false
+  hugo-version:
+    description: "Set a Hugo version, e.g. 0.97.3"
+    default: "latest"
+    required: false
+  extended:
+    description: "Download and use Hugo extended version, if necessary. e.g. true"
+    default: false
+    required: false
+  cache-path:
+    description: "The path input of actions/cache"
+    default: |
+      ~/go/pkg/mod
+      ~/.npm
+    required: false
+  cache-key:
+    description: "The key input of actions/cache"
+    default: "${{ runner.os }}-hugo-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/package-lock.json') }}"
+    required: false
+  cache-restore-keys:
+    description: "The restore-keys input of actions/cache"
+    default: "${{ runner.os }}-hugo-"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-go@v3
+      with:
+        go-version: "${{ inputs.go-version }}"
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "${{ inputs.node-version }}"
+
+    - uses: actions/cache@v3
+      with:
+        path: "${{ inputs.cache-path }}"
+        key: "${{ inputs.cache-key }}"
+        restore-keys: "${{ inputs.cache-restore-keys }}"
+
+    - run: npm i -g npm
+      shell: bash
+
+    - uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: "${{ inputs.hugo-version }}"
+        extended: "${{ inputs.extended }}"
