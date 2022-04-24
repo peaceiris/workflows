@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: peaceiris/workflows/setup-docker@v0.13.0
+      - uses: peaceiris/workflows/setup-docker@v0.14.0
       - run: docker compose version
       - run: docker buildx version
 ```
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: peaceiris/workflows/setup-docker@v0.13.0
+      - uses: peaceiris/workflows/setup-docker@v0.14.0
         with:
           compose-version: '2.4.1'
           buildx-version: '0.8.2'
@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-go@v0.13.0
+      - uses: peaceiris/workflows/setup-go@v0.14.0
         with:
           go-version: '1.18'
 
@@ -115,7 +115,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-node@v0.13.0
+      - uses: peaceiris/workflows/setup-node@v0.14.0
         with:
           node-version: '16.14.2'
 
@@ -147,7 +147,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-python@v0.13.0
+      - uses: peaceiris/workflows/setup-python@v0.14.0
         with:
           python-version: '3.10'
 
@@ -179,7 +179,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-rust@v0.13.0
+      - uses: peaceiris/workflows/setup-rust@v0.14.0
 ```
 
 
@@ -209,7 +209,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-goreleaser@v0.13.0
+      - uses: peaceiris/workflows/setup-goreleaser@v0.14.0
 
       - run: goreleaser -h
       - run: goreleaser check
@@ -218,7 +218,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-goreleaser@v0.13.0
+- uses: peaceiris/workflows/setup-goreleaser@v0.14.0
   with:
     goreleaser-version: '1.8.1'
 ```
@@ -250,7 +250,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: peaceiris/workflows/setup-mage@v0.13.0
+      - uses: peaceiris/workflows/setup-mage@v0.14.0
 
       - run: mage -h
       - run: mage fmt
@@ -259,7 +259,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-mage@v0.13.0
+- uses: peaceiris/workflows/setup-mage@v0.14.0
   with:
     mage-version: '1.10.0'
 ```
@@ -271,5 +271,5 @@ jobs:
 ```yaml
 jobs:
   hadolint:
-    uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.13.0
+    uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.14.0
 ```
