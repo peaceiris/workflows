@@ -5,6 +5,10 @@ inputs:
     description: "Set a Go version, e.g. 1.18"
     default: "1.18"
     required: false
+  go-version-file:
+    description: "Set a path to the go.mod, e.g. path/to/go.mod"
+    default: "go.mod"
+    required: false
   cache-path:
     description: "The path input of actions/cache"
     default: "~/go/pkg/mod"
@@ -24,6 +28,7 @@ runs:
     - uses: actions/setup-go@v3
       with:
         go-version: "${{ inputs.go-version }}"
+        go-version-file: "${{ inputs.go-version-file }}"
 
     - uses: peaceiris/workflows/setup-mage@v0.14.0
     - uses: peaceiris/workflows/setup-goreleaser@v0.14.0
