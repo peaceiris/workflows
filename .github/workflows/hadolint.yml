@@ -10,6 +10,7 @@ jobs:
       image: 'hadolint/hadolint:v2.10.0-alpine'
     permissions:
       contents: read
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
       - name: Lint Dockerfile
