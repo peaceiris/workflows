@@ -273,3 +273,19 @@ jobs:
   hadolint:
     uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.14.0
 ```
+
+
+
+## Reusable pull-request merger workflow
+
+```yaml
+name: pull-request
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  merger:
+    uses: peaceiris/workflows/.github/workflows/merger.yml@v0.16.0
+```
