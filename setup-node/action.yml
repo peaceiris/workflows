@@ -3,7 +3,9 @@ description: 'A composite action to setup Node.js project.'
 inputs:
   node-version:
     description: 'Set a Node.js version, e.g. 16.14.2'
-    default: '16'
+    required: false
+  node-version-file:
+    description: 'File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions'
     required: false
 runs:
   using: "composite"
@@ -11,6 +13,7 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: '${{ inputs.node-version }}'
+        node-version-file: '${{ inputs.node-version-file }}'
 
     - uses: actions/cache@v3
       with:
