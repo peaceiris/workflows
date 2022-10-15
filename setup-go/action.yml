@@ -2,8 +2,7 @@ name: "Setup Go"
 description: "A composite action to setup Go project."
 inputs:
   go-version:
-    description: "Set a Go version, e.g. 1.18"
-    default: "1.18"
+    description: "Set a Go version, e.g. 1.19"
     required: false
   go-version-file:
     description: "Set a path to the go.mod, e.g. path/to/go.mod"
