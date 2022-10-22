@@ -7,7 +7,6 @@ inputs:
     required: false
   go-version:
     description: "Set a Go version, e.g. 1.18"
-    default: "1.18"
     required: false
   go-version-file:
     description: "Set a path to the go.mod, e.g. path/to/go.mod"
