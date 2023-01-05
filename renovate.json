@@ -16,8 +16,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^README.md$"],
-      "matchStrings": ["peaceiris/workflows/.+@v(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
-      "depNameTemplate": "github-actions",
+      "matchStrings": ["peaceiris/workflows/.+@v(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "peaceiris/workflows"
     }
