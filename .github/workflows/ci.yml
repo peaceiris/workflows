@@ -21,6 +21,7 @@ jobs:
       - uses: peaceiris/workflows/setup-node@v0.18.0
         with:
           node-version-file: '.nvmrc'
+      - run: npm ci
       - run: npm test
 
   setup-docker:
