@@ -14,13 +14,7 @@ runs:
       with:
         node-version: '${{ inputs.node-version }}'
         node-version-file: '${{ inputs.node-version-file }}'
-
-    - uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        cache: 'npm'
 
     - run: npm i -g npm
       shell: bash
