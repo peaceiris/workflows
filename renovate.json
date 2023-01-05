@@ -12,5 +12,14 @@
       "matchUpdateTypes": ["minor", "patch"],
       "automergeStrategy": "squash"
     }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^README.md$"],
+      "matchStrings": ["peaceiris/workflows/.+@v(?<currentValue>\d+\.\d+\.\d+)"],
+      "depNameTemplate": "github-actions",
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "peaceiris/workflows"
+    }
   ]
 }
