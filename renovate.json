@@ -4,7 +4,8 @@
     "local>peaceiris/renovate-config"
   ],
   "enabledManagers": [
-    "github-actions"
+    "github-actions",
+    "regex"
   ],
   "packageRules": [
     {
