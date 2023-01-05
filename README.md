@@ -118,6 +118,7 @@ jobs:
       - uses: peaceiris/workflows/setup-node@v0.14.0
         with:
           node-version: '16.14.2'
+          # node-version-file: '.nvmrc'
 
       - run: node -v
       - run: npm -v
