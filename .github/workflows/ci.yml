@@ -18,9 +18,6 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - uses: peaceiris/workflows/setup-node@v0.18.0
-        with:
-          node-version: '18'
       - name: Validate renovate.json
         run: npx --package renovate -c 'renovate-config-validator'
 
