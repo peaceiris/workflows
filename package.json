@@ -1,0 +1,21 @@
+{
+  "name": "workflows",
+  "version": "0.18.0",
+  "description": "A collection of composite run steps GitHub Actions.",
+  "scripts": {
+    "test": "renovate-config-validator"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peaceiris/workflows.git"
+  },
+  "author": "peaceiris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peaceiris/workflows/issues"
+  },
+  "homepage": "https://github.com/peaceiris/workflows#readme",
+  "devDependencies": {
+    "renovate": "^34.83.1"
+  }
+}

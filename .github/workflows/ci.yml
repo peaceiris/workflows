@@ -18,8 +18,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - name: Validate renovate.json
-        run: npx --package renovate -c 'renovate-config-validator'
+      - uses: peaceiris/workflows/setup-node@v0.18.0
+        with:
+          node-version-file: '.nvmrc'
+      - run: npm test
 
   setup-docker:
     runs-on: ubuntu-22.04
