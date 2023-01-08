@@ -7,14 +7,18 @@ inputs:
   node-version-file:
     description: 'File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions'
     required: false
+  cache:
+    description: 'Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.'
+    required: false
+    default: 'npm'
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # https://github.com/actions/setup-node/releases/tag/v3.6.0
       with:
         node-version: '${{ inputs.node-version }}'
         node-version-file: '${{ inputs.node-version-file }}'
-        cache: 'npm'
+        cache: '${{ inputs.node-version-file }}'
 
     - run: npm i -g npm
       shell: bash
