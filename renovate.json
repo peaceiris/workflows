@@ -3,10 +3,6 @@
   "extends": [
     "local>peaceiris/renovate-config"
   ],
-  "enabledManagers": [
-    "github-actions",
-    "regex"
-  ],
   "packageRules": [
     {
       "automerge": true,
