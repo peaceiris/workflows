@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/peaceiris/workflows#readme",
   "devDependencies": {
-    "renovate": "^34.106.0"
+    "renovate": "^35.0.0"
   }
 }
