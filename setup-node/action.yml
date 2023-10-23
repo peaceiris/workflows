@@ -17,7 +17,7 @@ runs:
     - run: npm install -g corepack && corepack enable npm pnpm yarn
       shell: bash
 
-    - uses: actions/setup-node@v3.8.1 # https://github.com/actions/setup-node/releases
+    - uses: actions/setup-node@v3.8.2 # https://github.com/actions/setup-node/releases
       with:
         node-version: '${{ inputs.node-version }}'
         node-version-file: '${{ inputs.node-version-file }}'
