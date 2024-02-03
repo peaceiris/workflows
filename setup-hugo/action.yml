@@ -47,7 +47,7 @@ runs:
       with:
         node-version: "${{ inputs.node-version }}"
 
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: "${{ inputs.cache-path }}"
         key: "${{ inputs.cache-key }}"
