@@ -11,19 +11,6 @@ on:
       - "**.md"
 
 jobs:
-  lint:
-    runs-on: ubuntu-22.04
-    timeout-minutes: 3
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - uses: peaceiris/workflows/setup-node@v0.19.2
-        with:
-          node-version-file: '.nvmrc'
-      - run: npm ci
-      - run: npm test
-
   setup-docker:
     runs-on: ubuntu-22.04
     timeout-minutes: 3

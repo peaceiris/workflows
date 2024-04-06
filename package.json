@@ -3,7 +3,7 @@
   "version": "0.18.0",
   "description": "A collection of composite run steps GitHub Actions.",
   "scripts": {
-    "test": "renovate-config-validator"
+    "test:renovate": "renovate-config-validator"
   },
   "repository": {
     "type": "git",

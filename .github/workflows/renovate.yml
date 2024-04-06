@@ -1,0 +1,31 @@
+name: Renovate
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "renovate.json"
+      - ".github/workflows/renovate.yml"
+  pull_request:
+    paths:
+      - "renovate.json"
+      - ".github/workflows/renovate.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: peaceiris/workflows/setup-node@v0.19.2
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: npm run test:renovate
