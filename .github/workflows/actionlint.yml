@@ -3,6 +3,7 @@ name: Lint Workflows
 # https://github.com/rhysd/actionlint
 
 on:
+  workflow_call:
   push:
     branches:
       - main
