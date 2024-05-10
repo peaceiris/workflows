@@ -32,7 +32,7 @@ runs:
     - uses: peaceiris/workflows/setup-mage@v0.19.2
     - uses: peaceiris/workflows/setup-goreleaser@v0.19.2
 
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: "${{ inputs.cache-path }}"
         key: "${{ inputs.cache-key }}"
