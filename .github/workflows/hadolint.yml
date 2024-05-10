@@ -15,6 +15,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Lint Dockerfile
         run: |
-          for d in $(find . -type f -name "Dockerfile" -exec dirname {} \;); do
-            (cd ${d} && hadolint Dockerfile)
+          find . -type f -name "Dockerfile" -exec dirname {} \; | while read -r d; do
+            (cd "${d}" && hadolint Dockerfile)
           done
