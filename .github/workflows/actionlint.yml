@@ -1,0 +1,25 @@
+name: Lint Workflows
+
+# https://github.com/rhysd/actionlint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/*'
+  pull_request:
+    paths:
+      - '.github/workflows/*'
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 1
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - uses: docker://rhysd/actionlint:1.7.0
+        with:
+          args: -color
