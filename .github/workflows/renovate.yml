@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: peaceiris/workflows/setup-node@v0.19.3
+      - uses: peaceiris/workflows/setup-node@v0.20.0
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
