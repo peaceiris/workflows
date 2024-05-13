@@ -277,6 +277,16 @@ jobs:
 
 
 
+## Reusable actionlint workflow
+
+```yaml
+jobs:
+  actionlint:
+    uses: peaceiris/workflows/.github/workflows/actionlint.yml@v0.20.0
+```
+
+
+
 ## Reusable pull-request merger workflow
 
 ```yaml
