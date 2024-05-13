@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>peaceiris/renovate-config"
-  ],
+  "extends": ["local>peaceiris/renovate-config"],
   "packageRules": [
     {
       "automerge": true,
@@ -15,8 +13,9 @@
       "minimumReleaseAge": "30 days"
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["^README.md$"],
       "matchStrings": ["peaceiris/workflows/.+@(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
