@@ -19,6 +19,9 @@ jobs:
     timeout-minutes: 1
     permissions:
       contents: read
+    concurrency:
+      group: "${{ github.workflow }}-${{ github.ref }}"
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - uses: docker://rhysd/actionlint:1.7.0
