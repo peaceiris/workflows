@@ -8,9 +8,12 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: 'hadolint/hadolint:v2.12.0-alpine'
+    timeout-minutes: 5
     permissions:
       contents: read
-    timeout-minutes: 5
+    concurrency:
+      group: "${{ github.workflow }}-${{ github.ref }}"
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v4
       - name: Lint Dockerfile
