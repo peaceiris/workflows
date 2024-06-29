@@ -23,7 +23,7 @@ jobs:
       contents: read
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@86f86b36ef15e6570752e7175f451a512eac206b # v2.1.1
       - uses: peaceiris/workflows/setup-node@v0.20.1
         with:
           node-version-file: ".nvmrc"
