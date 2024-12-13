@@ -29,8 +29,8 @@ runs:
         go-version: "${{ inputs.go-version }}"
         go-version-file: "${{ inputs.go-version-file }}"
 
-    - uses: peaceiris/workflows/setup-mage@v0.20.1
-    - uses: peaceiris/workflows/setup-goreleaser@v0.20.1
+    - uses: peaceiris/workflows/setup-mage@v0.21.0
+    - uses: peaceiris/workflows/setup-goreleaser@v0.21.0
 
     - uses: actions/cache@v4
       with:
