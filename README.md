@@ -226,6 +226,46 @@ jobs:
 
 
 
+## Setup [ko-build/ko]
+
+Install `ko` to a GitHub Actions Ubuntu or macOS virtual environment.
+
+Definition: [setup-ko/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-ko/action.yml)
+
+[ko-build/ko]: https://github.com/ko-build/ko
+
+### Install the Latest Version
+
+Here is an example GitHub Actions workflow to install the latest `ko` and run it.
+
+```yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: peaceiris/workflows/setup-ko@v0.21.0
+
+      - run: ko version
+```
+
+### Install a Specific Version
+
+```yaml
+- uses: peaceiris/workflows/setup-ko@v0.21.0
+  with:
+    ko-version: '0.17.1'
+```
+
+
+
 ## Setup [magefile/mage]
 
 Install `mage` to a GitHub Actions Ubuntu virtual environment.

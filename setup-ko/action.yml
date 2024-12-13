@@ -1,0 +1,27 @@
+name: 'Install ko-build/ko'
+description: 'A composite run steps action to install ko-build/ko'
+inputs:
+  ko-version:
+    description: 'Set a ko version, e.g. 0.17.1'
+    default: ''
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Install ko
+      run: |
+        # set -eux
+        echo "https://github.com/peaceiris/workflows/blob/main/setup-ko/action.yml"
+        if [ -z '${{ inputs.ko-version }}' ]; then
+          export KO_VERSION="$(curl -fsi "https://github.com/ko-build/ko/releases/latest" | awk -F/ '/^(L|l)ocation:/ {print $(NF)}' | tr -d '\r')"
+        else
+          export KO_VERSION="${{ inputs.ko-version }}"
+        fi
+        export KO_VERSION="${KO_VERSION#v}"
+        cd $(mktemp --directory)
+        wget --quiet https://github.com/ko-build/ko/releases/download/v${KO_VERSION}/ko_$(uname -s)_$(uname -m).tar.gz
+        tar xvf ko_$(uname -s)_$(uname -m).tar.gz
+        sudo cp ./ko /usr/local/bin/ko
+      shell: bash
+    - run: ko version
+      shell: bash
