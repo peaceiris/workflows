@@ -1,16 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>peaceiris/renovate-config"],
+  "extends": ["config:recommended", "mergeConfidence:all-badges"],
+  "timezone": "Asia/Tokyo",
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 2,
+  "branchPrefix": "renovate/",
+  "additionalBranchPrefix": "{{packageFileDir}}-",
+  "labels": ["renovate", "dependencies"],
+  "reviewersFromCodeOwners": true,
+  "rebaseWhen": "conflicted",
+  "separateMinorPatch": true,
   "packageRules": [
     {
-      "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"],
-      "automergeStrategy": "squash"
-    },
-    {
-      "groupName": "renovate",
       "matchPackageNames": ["renovate"],
-      "minimumReleaseAge": "30 days"
+      "automerge": true,
+      "automergeType": "pr",
+      "minimumReleaseAge": "1 days",
+      "separateMinorPatch": false
     }
   ],
   "customManagers": [
@@ -20,6 +26,20 @@
       "matchStrings": ["peaceiris/workflows/.+@(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "peaceiris/workflows"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^README.md$"],
+      "matchStrings": ["actions/checkout@(?<currentValue>.*)"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "actions/checkout"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^README.md$"],
+      "matchStrings": ["actions/checkout@(?<currentValue>.*)"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "actions/checkout"
     }
   ]
 }
