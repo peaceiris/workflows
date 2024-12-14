@@ -33,13 +33,6 @@
       "matchStrings": ["actions/checkout@(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "actions/checkout"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["^README.md$"],
-      "matchStrings": ["actions/checkout@(?<currentValue>.*)"],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "actions/checkout"
     }
   ]
 }
