@@ -1,6 +1,6 @@
 {
   "name": "workflows",
-  "version": "0.18.0",
+  "version": "0.21.0",
   "description": "A collection of composite run steps GitHub Actions.",
   "scripts": {
     "test:renovate": "renovate-config-validator"
