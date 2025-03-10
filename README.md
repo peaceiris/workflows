@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: peaceiris/workflows/setup-docker@v0.21.0
+      - uses: peaceiris/workflows/setup-docker@v0.21.1
       - run: docker compose version
       - run: docker buildx version
 ```
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: peaceiris/workflows/setup-docker@v0.21.0
+      - uses: peaceiris/workflows/setup-docker@v0.21.1
         with:
           compose-version: '2.4.1'
           buildx-version: '0.8.2'
@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-go@v0.21.0
+      - uses: peaceiris/workflows/setup-go@v0.21.1
         with:
           go-version: '1.18'
 
@@ -115,7 +115,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-node@v0.21.0
+      - uses: peaceiris/workflows/setup-node@v0.21.1
         with:
           node-version: '16.14.2'
           # node-version-file: '.nvmrc'
@@ -148,7 +148,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-python@v0.21.0
+      - uses: peaceiris/workflows/setup-python@v0.21.1
         with:
           python-version: '3.10'
 
@@ -180,7 +180,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-rust@v0.21.0
+      - uses: peaceiris/workflows/setup-rust@v0.21.1
 ```
 
 
@@ -210,7 +210,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-goreleaser@v0.21.0
+      - uses: peaceiris/workflows/setup-goreleaser@v0.21.1
 
       - run: goreleaser -h
       - run: goreleaser check
@@ -219,7 +219,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-goreleaser@v0.21.0
+- uses: peaceiris/workflows/setup-goreleaser@v0.21.1
   with:
     goreleaser-version: '1.8.1'
 ```
@@ -251,7 +251,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-ko@v0.21.0
+      - uses: peaceiris/workflows/setup-ko@v0.21.1
 
       - run: ko version
 ```
@@ -259,7 +259,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-ko@v0.21.0
+- uses: peaceiris/workflows/setup-ko@v0.21.1
   with:
     ko-version: '0.17.1'
 ```
@@ -291,7 +291,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: peaceiris/workflows/setup-mage@v0.21.0
+      - uses: peaceiris/workflows/setup-mage@v0.21.1
 
       - run: mage -h
       - run: mage fmt
@@ -300,7 +300,7 @@ jobs:
 ### Install a Specific Version
 
 ```yaml
-- uses: peaceiris/workflows/setup-mage@v0.21.0
+- uses: peaceiris/workflows/setup-mage@v0.21.1
   with:
     mage-version: '1.10.0'
 ```
@@ -312,7 +312,7 @@ jobs:
 ```yaml
 jobs:
   hadolint:
-    uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.21.0
+    uses: peaceiris/workflows/.github/workflows/hadolint.yml@v0.21.1
 ```
 
 
@@ -322,7 +322,7 @@ jobs:
 ```yaml
 jobs:
   actionlint:
-    uses: peaceiris/workflows/.github/workflows/actionlint.yml@v0.21.0
+    uses: peaceiris/workflows/.github/workflows/actionlint.yml@v0.21.1
 ```
 
 
@@ -338,5 +338,5 @@ on:
 
 jobs:
   merger:
-    uses: peaceiris/workflows/.github/workflows/merger.yml@v0.21.0
+    uses: peaceiris/workflows/.github/workflows/merger.yml@v0.21.1
 ```
