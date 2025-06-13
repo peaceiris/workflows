@@ -13,7 +13,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["renovate"],
-      "automerge": true,
+      "automerge": false,
       "automergeType": "pr",
       "minimumReleaseAge": "1 days",
       "separateMinorPatch": false
