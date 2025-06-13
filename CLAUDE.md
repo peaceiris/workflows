@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a collection of composite run steps GitHub Actions. Each directory contains actions for setting up specific development environments.
 
+## Language and Communication
+
+- All files and GitHub comments should be written in English.
+
 ## Development Commands
 
 ### Testing
