@@ -30,6 +30,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) an
 - `refactor: Refactoring`
 - `chore: Other changes`
 - `build: Build-related changes`
+- `ci: CI/CD changes`
 
 ## Commit Template
 

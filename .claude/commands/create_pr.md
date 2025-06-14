@@ -45,6 +45,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) an
 - `refactor: code refactoring`
 - `chore: other changes`
 - `build: build-related changes`
+- `ci: CI/CD changes`
 
 ## Example
 
