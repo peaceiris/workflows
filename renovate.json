@@ -22,14 +22,14 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^README.md$"],
+      "managerFilePatterns": ["/^README.md$/"],
       "matchStrings": ["peaceiris/workflows/.+@(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "peaceiris/workflows"
     },
     {
       "customType": "regex",
-      "fileMatch": ["^README.md$"],
+      "managerFilePatterns": ["/^README.md$/"],
       "matchStrings": ["actions/checkout@(?<currentValue>.*)"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "actions/checkout"
