@@ -56,7 +56,7 @@ runs:
     - run: npm i -g npm
       shell: bash
 
-    - uses: peaceiris/actions-hugo@v3
+    - uses: peaceiris/actions-hugo@cf03c8dbc2af2ee77af72f7b8c9f61b797dc7d38 # v3.2.0
       with:
         hugo-version: "${{ inputs.hugo-version }}"
         extended: "${{ inputs.extended }}"
