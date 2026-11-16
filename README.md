@@ -102,6 +102,10 @@ This composite action includes the following actions:
 
 Definition: [setup-node/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-node/action.yml)
 
+This action installs Corepack. On runners with standalone global Yarn or pnpm
+installations (including `windows-latest`), run `npm uninstall --global yarn pnpm`
+before this action to avoid conflicts with Corepack's binaries.
+
 ```yaml
 name: CI
 

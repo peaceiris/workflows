@@ -23,6 +23,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Remove package managers that conflict with Corepack
+        if: runner.os == 'Windows'
+        shell: bash
+        run: npm uninstall --global yarn pnpm
       - name: Setup Node.js with default npm
         if: ${{ matrix.npm-version == '' }}
         uses: ./setup-node
