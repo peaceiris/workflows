@@ -102,6 +102,10 @@ This composite action includes the following actions:
 
 Definition: [setup-node/action.yml](https://github.com/peaceiris/workflows/blob/main/setup-node/action.yml)
 
+This action installs Corepack. On runners with standalone global Yarn or pnpm
+installations (including `windows-latest`), run `npm uninstall --global yarn pnpm`
+before this action to avoid conflicts with Corepack's binaries.
+
 ```yaml
 name: CI
 
@@ -123,6 +127,26 @@ jobs:
       - run: node -v
       - run: npm -v
 ```
+
+### Install a Specific npm Version
+
+Set `npm-version` to an npm version, range, or dist-tag (for example, `12`,
+`12.2.2`, or `latest`). Choose a Node.js version supported by that npm release.
+Omitting `npm-version` keeps the existing npm setup unchanged.
+
+```yaml
+# Use a revision containing npm-version (not available in v0.21.2).
+- uses: peaceiris/workflows/setup-node@main
+  with:
+    node-version: '24'
+    npm-version: '12'
+```
+
+The action installs npm globally after `actions/setup-node` selects Node.js and
+restores the package-manager cache. The cache still contains downloaded packages,
+not the global npm installation; npm is installed on every run when requested.
+When `npm-version` is set, the action enables Corepack only for pnpm and Yarn to
+avoid an npm shim conflicting with the requested npm installation.
 
 
 
